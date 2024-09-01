@@ -6,6 +6,9 @@
 #include "Characters/ConeWarriorBaseCharacter.h"
 #include "ConeWarriorHeroCharacter.generated.h"
 
+class USpringArmComponent;
+class UCameraComponent;
+
 /**
  * 
  */
@@ -14,7 +17,24 @@ class CONEWARRIORV2_API AConeWarriorHeroCharacter : public AConeWarriorBaseChara
 {
 	GENERATED_BODY()
 
+public: 
+	AConeWarriorHeroCharacter();
+
+
 protected:
+
 	virtual void BeginPlay() override;
+
+private:
+#pragma region Components
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
+	USpringArmComponent* CameraBoom;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
+	UCameraComponent* FollowCamera;
+
+#pragma endregion
+
 	
 };
