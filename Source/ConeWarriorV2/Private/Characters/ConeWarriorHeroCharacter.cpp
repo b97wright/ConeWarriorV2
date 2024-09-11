@@ -108,7 +108,19 @@ void AConeWarriorHeroCharacter::Input_Look(const FInputActionValue& InputActionV
 
 void AConeWarriorHeroCharacter::Input_Jump(const FInputActionValue& InputActionValue)
 {
-	
+	const bool bIsJumping = InputActionValue.Get<bool>();
+
+	if (bIsJumping)
+	{
+		if (GetCharacterMovement()->IsFalling() == false)
+		{
+			Jump();
+		}
+	}
+	else
+	{
+		StopJumping();
+	}
 }
 
 
