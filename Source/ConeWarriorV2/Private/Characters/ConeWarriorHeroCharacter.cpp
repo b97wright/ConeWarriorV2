@@ -9,6 +9,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "DataAssets/Input/DataAsset_InputConfig.h"
 #include "Components/Input/ConeWarriorInputComponent.h"
+#include "AbilitySystem/ConeWarAbilitySystemComponent.h"
 #include "ConeWarriorGameplayTags.h"
 
 #include "ConeWarriorDebugHelper.h"
@@ -38,6 +39,20 @@ AConeWarriorHeroCharacter::AConeWarriorHeroCharacter()
 
 }
 
+void AConeWarriorHeroCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	if (ConeWarAbilitySystemComponent && ConeWarriorAttributeSet)
+	{
+
+		const FString ASCText = FString::Printf(TEXT("Owning Actor: %s, AvatarActor: %s"), *ConeWarAbilitySystemComponent->GetOwnerActor()->GetActorLabel(), *ConeWarAbilitySystemComponent->GetAvatarActor()->GetActorLabel());
+		Debug::Print(TEXT("Ability system component valid. ") + ASCText, FColor::Green);
+		Debug::Print(TEXT("AttributeSet valid. ") + ASCText, FColor::Green);
+
+	}
+}
+
 void AConeWarriorHeroCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	checkf(InputConfigDataAsset, TEXT("Forgot to assign a valid data asset as input config"));
@@ -63,7 +78,6 @@ void AConeWarriorHeroCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Debug::Print(TEXT("Working!!!"));
 }
 
 void AConeWarriorHeroCharacter::Input_Move(const FInputActionValue& InputActionValue)

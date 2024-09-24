@@ -2,6 +2,8 @@
 
 
 #include "Characters/ConeWarriorBaseCharacter.h"
+#include "AbilitySystem/ConeWarAbilitySystemComponent.h"
+#include "AbilitySystem/ConeWarriorAttributeSet.h"
 
 // Sets default values
 AConeWarriorBaseCharacter::AConeWarriorBaseCharacter()
@@ -11,6 +13,26 @@ AConeWarriorBaseCharacter::AConeWarriorBaseCharacter()
 	PrimaryActorTick.bStartWithTickEnabled = false;
 
 	GetMesh()->bReceivesDecals = false;
+
+	ConeWarAbilitySystemComponent = CreateDefaultSubobject<UConeWarAbilitySystemComponent>(TEXT("ConeWarAbilitySystemComponent"));
+
+	ConeWarriorAttributeSet = CreateDefaultSubobject<UConeWarriorAttributeSet>(TEXT("ConeWarriorAttributeSet"));
+
+}
+
+UAbilitySystemComponent* AConeWarriorBaseCharacter::GetAbilitySystemComponent() const
+{
+	return GetConeWarAbilitySystemComponent();
+}
+
+void AConeWarriorBaseCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	if (ConeWarAbilitySystemComponent)
+	{
+		ConeWarAbilitySystemComponent->InitAbilityActorInfo(this, this);
+	}
 
 }
 
