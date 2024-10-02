@@ -32,6 +32,9 @@ void AConeWarriorBaseCharacter::PossessedBy(AController* NewController)
 	if (ConeWarAbilitySystemComponent)
 	{
 		ConeWarAbilitySystemComponent->InitAbilityActorInfo(this, this);
+
+		ensureMsgf(!CharacterStartUpData.IsNull(), TEXT("Forgot to assign start up data to %s"), *GetName());
+
 	}
 
 }

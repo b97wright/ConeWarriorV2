@@ -9,6 +9,7 @@
 
 class UConeWarAbilitySystemComponent;
 class UConeWarriorAttributeSet;
+class UDataAsset_StartUpDataBase;
 
 UCLASS()
 class CONEWARRIORV2_API AConeWarriorBaseCharacter : public ACharacter , public IAbilitySystemInterface
@@ -34,6 +35,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystem")
 	UConeWarriorAttributeSet* ConeWarriorAttributeSet;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "CharacterData")
+	TSoftObjectPtr<UDataAsset_StartUpDataBase> CharacterStartUpData;
 
 public:
 

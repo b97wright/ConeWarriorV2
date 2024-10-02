@@ -11,6 +11,7 @@
 #include "Components/Input/ConeWarriorInputComponent.h"
 #include "AbilitySystem/ConeWarAbilitySystemComponent.h"
 #include "ConeWarriorGameplayTags.h"
+#include "Components/StartUpData/DataAsset_ConeHeroStartUpData.h"
 
 #include "ConeWarriorDebugHelper.h"
 
@@ -43,13 +44,12 @@ void AConeWarriorHeroCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
 
-	if (ConeWarAbilitySystemComponent && ConeWarriorAttributeSet)
+	if (!CharacterStartUpData.IsNull())
 	{
-
-		const FString ASCText = FString::Printf(TEXT("Owning Actor: %s, AvatarActor: %s"), *ConeWarAbilitySystemComponent->GetOwnerActor()->GetActorLabel(), *ConeWarAbilitySystemComponent->GetAvatarActor()->GetActorLabel());
-		Debug::Print(TEXT("Ability system component valid. ") + ASCText, FColor::Green);
-		Debug::Print(TEXT("AttributeSet valid. ") + ASCText, FColor::Green);
-
+		if (UDataAsset_StartUpDataBase* LoadedData = CharacterStartUpData.LoadSynchronous())
+		{
+			LoadedData->GiveToAbilitySystemComponent(ConeWarAbilitySystemComponent);
+		}
 	}
 }
 
