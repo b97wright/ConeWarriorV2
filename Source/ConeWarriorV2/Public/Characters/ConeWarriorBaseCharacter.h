@@ -21,7 +21,7 @@ public:
 	AConeWarriorBaseCharacter();
 
 	//~ Begin IAbilitySystemInterface Interface.
-	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const;
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	//~ Begin IAbilitySystemInterface Interface.
 
 protected:

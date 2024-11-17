@@ -19,7 +19,7 @@ class CONEWARRIORV2_API UConeWarriorHeroAnimInstance : public UConeWarriorCharac
 public:
 
 	virtual void NativeInitializeAnimation() override;
-	virtual void NativeThreadSafeUpdateAnimation(float DeltaSeconds);
+	virtual void NativeThreadSafeUpdateAnimation(float DeltaSeconds) override;
 
 protected:
 
