@@ -12,6 +12,7 @@
 #include "AbilitySystem/ConeWarAbilitySystemComponent.h"
 #include "ConeWarriorGameplayTags.h"
 #include "Components/StartUpData/DataAsset_ConeHeroStartUpData.h"
+#include "Components/Combat/HeroCombatComponent.h"
 
 #include "ConeWarriorDebugHelper.h"
 
@@ -37,6 +38,8 @@ AConeWarriorHeroCharacter::AConeWarriorHeroCharacter()
 	GetCharacterMovement()->RotationRate = FRotator(0.f, 500.f, 0.f);
 	GetCharacterMovement()->MaxWalkSpeed = 400.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
+
+	HeroCombatComponent = CreateDefaultSubobject<UHeroCombatComponent>(TEXT("HeroCombatComponent"));
 
 }
 
