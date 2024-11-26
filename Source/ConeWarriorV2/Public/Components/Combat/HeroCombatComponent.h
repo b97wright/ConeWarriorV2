@@ -13,5 +13,5 @@ UCLASS()
 class CONEWARRIORV2_API UHeroCombatComponent : public UPawnCombatComponent
 {
 	GENERATED_BODY()
-	
+
 };

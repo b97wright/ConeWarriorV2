@@ -3,6 +3,7 @@
 
 #include "AbilitySystem/Abilities/ConeWarriorGameplayAbility.h"
 #include "AbilitySystem/ConeWarAbilitySystemComponent.h"
+#include "Components/Combat/PawnCombatComponent.h"
 
 void UConeWarriorGameplayAbility::OnGiveAbility(const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilitySpec& Spec)
 {
@@ -28,4 +29,9 @@ void UConeWarriorGameplayAbility::EndAbility(const FGameplayAbilitySpecHandle Ha
 			ActorInfo->AbilitySystemComponent->ClearAbility(Handle);
 		}
 	}
+}
+
+UPawnCombatComponent* UConeWarriorGameplayAbility::GetPawnCombatComponentFromActorInfo() const
+{
+	return GetAvatarActorFromActorInfo()->FindComponentByClass<UPawnCombatComponent>();
 }
