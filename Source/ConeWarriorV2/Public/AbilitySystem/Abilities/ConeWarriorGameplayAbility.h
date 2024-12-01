@@ -7,6 +7,7 @@
 #include "ConeWarriorGameplayAbility.generated.h"
 
 class UPawnCombatComponent;
+class UConeWarAbilitySystemComponent;
 
 UENUM(BlueprintType)
 enum class EConeWarriorAbilityActivationPolicy : uint8
@@ -35,5 +36,8 @@ protected:
 
 	UFUNCTION(BlueprintPure, Category = "Warrior|Ability")
 	UPawnCombatComponent* GetPawnCombatComponentFromActorInfo() const;
+
+	UFUNCTION(BlueprintPure, Category = "Warrior|Ability")
+	UConeWarAbilitySystemComponent* getConeWarAbilitySystemComponentFromActorInfo() const;
 	
 };

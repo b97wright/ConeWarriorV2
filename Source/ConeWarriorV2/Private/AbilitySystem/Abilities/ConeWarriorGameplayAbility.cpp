@@ -35,3 +35,8 @@ UPawnCombatComponent* UConeWarriorGameplayAbility::GetPawnCombatComponentFromAct
 {
 	return GetAvatarActorFromActorInfo()->FindComponentByClass<UPawnCombatComponent>();
 }
+
+UConeWarAbilitySystemComponent* UConeWarriorGameplayAbility::getConeWarAbilitySystemComponentFromActorInfo() const
+{
+	return Cast<UConeWarAbilitySystemComponent>(CurrentActorInfo->AbilitySystemComponent);
+}
