@@ -75,6 +75,8 @@ void AConeWarriorHeroCharacter::SetupPlayerInputComponent(UInputComponent* Playe
 	ConeWarriorInputComponent->BindNativeInputAction(InputConfigDataAsset, ConeWarriorGameplayTags::InputTag_Look, ETriggerEvent::Triggered, this, &ThisClass::Input_Look);
 	ConeWarriorInputComponent->BindNativeInputAction(InputConfigDataAsset, ConeWarriorGameplayTags::InputTag_Jump, ETriggerEvent::Triggered, this, &ThisClass::Input_Jump);
 
+	ConeWarriorInputComponent->BindAbilityInputAction(InputConfigDataAsset, this, &ThisClass::Input_AbilityPressed, &ThisClass::Input_AbilityReleased);
+
 }
 
 void AConeWarriorHeroCharacter::BeginPlay()
@@ -138,6 +140,16 @@ void AConeWarriorHeroCharacter::Input_Jump(const FInputActionValue& InputActionV
 	{
 		StopJumping();
 	}
+}
+
+void AConeWarriorHeroCharacter::Input_AbilityPressed(FGameplayTag InInputTag)
+{
+	ConeWarAbilitySystemComponent->OnAbilityInputPressed(InInputTag);
+}
+
+void AConeWarriorHeroCharacter::Input_AbilityReleased(FGameplayTag InInputTag)
+{
+	ConeWarAbilitySystemComponent->OnAbilityInputReleased(InInputTag);
 }
 
 

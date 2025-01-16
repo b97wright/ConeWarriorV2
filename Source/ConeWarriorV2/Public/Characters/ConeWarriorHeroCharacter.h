@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Characters/ConeWarriorBaseCharacter.h"
+#include "GameplayTagContainer.h"
 #include "ConeWarriorHeroCharacter.generated.h"
 
 class USpringArmComponent;
@@ -56,6 +57,9 @@ private:
 	void Input_Move(const FInputActionValue& InputActionValue);
 	void Input_Look(const FInputActionValue& InputActionValue);
 	void Input_Jump(const FInputActionValue& InputActionValue);
+
+	void Input_AbilityPressed(FGameplayTag InInputTag);
+	void Input_AbilityReleased(FGameplayTag InInputTag);
 
 
 #pragma endregion
