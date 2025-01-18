@@ -15,4 +15,9 @@ namespace ConeWarriorGameplayTags
 
 	/* Player Tags */
 	CONEWARRIORV2_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Weapon_Axe);
+
+	CONEWARRIORV2_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_Equip_Axe);
+	CONEWARRIORV2_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_Unequip_Axe);
+
+
 }
